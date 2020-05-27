@@ -1,0 +1,62 @@
+Different API Life Cycle management tools available in market
+
+https://www.gartner.com/reviews/market/full-life-cycle-api-management
+
+API Management     - Company details
+
+Apigee Edge
+Apigee Sense	   - Google(Apigee)
+
+Amazon API Gateway - AWS
+
+Mulesoft Anypoint  - Mulesoft
+
+Dell Boomi 	   - Boomi
+
+Microsoft Azure	   - Microsoft
+
+IBM API connect	   - IBM
+
+SAP Cloud Platform - SAP
+
+AMPLIFY		   - Axway
+
+ReadyAPI,
+SwaggerHub	   - SmartBear
+
+Cloud Mashery,
+
+API Exchange	   - TIBCO
+
+
+Kong Enterprise
+Kong Gateway	   - Kong
+
+Centrasite, 
+webMethods Mediator
+(LEgacy)
+webMethods API portal
+webMethodsAPIGateway- Software AG
+
+Layer7		    - Broadcom
+
+
+WS02 API Manager    - WSO2
+
+Temenos	      	    - Kony
+
+3scale, APIMAN
+3sccale developer   - Red Hat
+
+API management
+for NGINX controller- NGINX
+
+SEEBURGER BIS	    - SEEBURGER
+
+Digit Market	    - Torry Harris Business solutions
+
+ignite		    - digitalIML
+
+Postman		    - Postman
+
+

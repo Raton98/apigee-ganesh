@@ -1,0 +1,37 @@
+Register a new user in Drupal
+
+add additional fields to user registration form by logging in as admin user
+
+Manage user settings in developer portal
+
+Manage application settings like cache 
+
+Customise app form 
+
+Restrict access api products by role using modules
+
+publish api documentation using swagger open api spec from apigee developer portal
+
+Capture developer attributes and use them accordingly
+
+APIGEE edge org -> to which developer organisation the developer portal is connected
+
+use drush commands to update/view settings
+
+patheon - is where the apigee developer portals are hosted
+
+if it is on premieses no need to use @ pathoen 
+
+drush @patheon.4m4vd.dev dc-getorg  -> get organisation name
+
+update connecton settings usgin drush commands
+
+debug level settings can be done in drupal developer portal 
+
+access log messages for more debug
+
+
+
+
+
+

@@ -1,0 +1,118 @@
+https://medium.com/@OPTASY.com/google-apigee-vs-mulesoft-how-do-you-choose-the-right-one-for-you-how-are-they-different-bf3201b5d85a
+https://www.computingdelta.com/2019/10/23/apigee-vs-mulesoft/
+https://www.itcentralstation.com/products/comparisons/amazon-api-gateway_vs_apigee_vs_mulesoft-anypoint-api-manager
+
+
+An API management platform serves as a proxy for customer requests. It limits the number of queries each customer can send, 
+and ensures that a high number of queries – either sent maliciously or unintentionally – does not crash a service
+
+In terms of management platforms, Apigee produces Apigee Edge and Mulesoft customers use the Anypoint Platform. 
+Both are full lifecycle management tools: in addition to query management they have advanced features like analytics; runtime management; developer portals; and ways to plan, build, roll out and retire APIs.
+
+APIGEE basics information
+
+APIGEE -> sona systems in 2004 re brnading in 2010
+	-> acquired by google for 625 million
+	-> gOOGLE Acquisition is intended as a stepping stone to bring new customers
+	  to google cloud 
+Apigee is an API gateway tool that provides a secure environment 
+for multiple cloud services and applications to exchange data in.
+In short: Google Apigee is that platform that helps you manage all your APIs 
+in one place. A platform that brings together all your digital experiences.
+
+The process where you manage all your APIs in a secure and scalable environment.
+
+How precisely does it help you be effective when managing your APIs?
+
+
+APIGEE 	-> secure env for multiple cloud and apps to exchange data in.
+	-> API Management Platform(security, mnitoring, version control, API key and authroization mangement
+	   analytics, live updated documentation, developer community management,
+	   developer portal for more guidance)
+	-> Effective in managing api's(constant version updates, troubleshooting options,
+	   scalable based on needs, support multi-cloud & hybrid cloud, automates API documentation and SDK,
+	   speeds up impl of API proxies with integrated metrics and dashboards, 
+	   provides UI for your legacy data stores, monitoring tools for security
+	   API troubleshooting & optimisation)
+	-> grants close control of user access(Ganular control based on their particular
+	   needs and adjust the services requests based on users specific requirements)
+	-> allows branding
+	-> support JMS and SMTP functionality
+	-> seamless integration with other platforms
+
+Mulesoft -> us based company, salesforces acquired in 2018 for 6.5 bullion 
+	-> Mulesoft revenue in 2018 Q4 -> 181 million(156 million is support revenue
+	-> firm winner in terms of revenue
+
+MULEESB -> higher ongoing operation costs compared to APIGEE
+	-> implementation a CI/CD environment conveniently easy
+	-> variery of interation patterns since it has lots of adapter & roboust message oriented middleware
+	-> robost features in API management(oAuth, throttling & access levels...)
+	-> easier to be integrated to other system and services
+	   (has wide array of connectors for Twitter, FAcebook, SAP, Salesforce &
+	   business proces management software) 
+
+
+In Google Apigee APIs are consumption-centric, whereas in Mule ESB they’re exposure-focused (or reuse-focused).
+
+When Do You Use One API Manager over the Other? Specific Use Cases?
+
+which one to use?
+
+APIGEE	-> Best suited for connected apps scenarios
+	   (udpate legacy apps to enable data exchange across your ecosystem of apps and serices)
+	-> Full API life cycle management
+	  (Platform that exposes your services in secure way & have powerful API governance
+	  & management features like caching and analytics)
+	-> more mature for micro service management 
+
+MULEEB 	-> more apporopriate for REST API development
+	-> suited for system-to-system integration
+	-> covers bigger scope compared to APIGEE
+	-> ahead in integration capabilities	
+
+
+APIGEE Edge and Mulesoft Anypoint differences
+
+APIGEE Edge	-> single platform of api management , developer services and analytics
+	    	-> Functions(API design, security, publishing, monitoring & monetisation, microservice management)
+		-> Apigee-127 - desgin and build enterprise class API's in node.js and depoly them in node.js system
+		-> solution can be in on premises and in cloud
+		-> Apigee supports public, private, hybrid and multi-cloud
+		-> as per users  cloud version is both cheaper and easier to install.
+		-> apIGEE customers can write their own connectors and less restrictive
+		then worrying about using the pre build connector like mulesoft anypoint
+
+
+Mulesoft anypoint -> meging API mangement into Mule integration platform in 2013
+		  -> Anypoint platform API management solution in 2018 for integration platforms
+		  -> Able to combine internal services and third party API's
+		  -> New microservices service mesh(Any point service mesh) in 2019
+		 for customers to discover, manage and secure any service deployed to kubernetes
+		-> Speed up thier digital transformation
+		-> Pre build connectors for systems SAP, AWS and salesforce
+		-> integration process fast and can be limiting
+		-> can be on premises and cloud and hybrid development
+
+
+Amazon Gateway	-> This solution gives you a unified way to have your API accessed.
+ 		-> It's a managed product and is fully scalable. 
+		-> This solution ties in very well with all of the AWS services, such as IAM and asset management. It gives you security from an authentication and authorization point of view. Lambda integration and functionality is very good. 
+		-> This solution ties directly in with the AWS firewall, which gives you a lot of security, including application security in terms of things like SQL injection and cross-site scripting.
+		-> The most valuable feature is the ease of managing the gateway. This solution is useful for making new APIs. We deploy with CloudFormation, so it's pretty easy to use
+		-> aBILITY to proxy has been the most valuable feature
+
+
+APIGEE subscription details(Free Evalution -> ... -> Enterprise)
+1. Four tiers -> From Free evaluation tier(one user, one env and 100k api calls a month, 30 days of analytics reports)
+	      -> To Enterprise tier (10 org/ env combinations; 10 billions API calls a years, 30 days of analytics reports; 12 months of reports)'
+	      -> high pricing but worth as per users
+Mule soft pricing details
+1. Three tiers -> Gold, Platinum and Titanium
+	       -> Covers base funtionality like mangement, API design and unlimited API portals
+		-> Connectors require additional premium
+		-> Platinum and titanium have enterprise features like
+		(external identity management and business groups, 
+		& advanced data analytics,log management, E2E tx tracing - titanium limited features)
+		
+
