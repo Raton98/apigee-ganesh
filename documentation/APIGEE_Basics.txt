@@ -1,0 +1,68 @@
+APIGEE -> acquired by google
+
+Why APIGEE?
+What is APIGEE?
+
+What 
+API Management tool 
+Expose our API to internet -> managed by someone -> 
+
+https://wso2.com/library/articles/2017/02/six-business-benefits-of-api-management/
+https://blogs.oracle.com/integration/why-invest-in-api-management
+https://www.mulesoft.com/resources/api/what-is-api-management
+https://searchapparchitecture.techtarget.com/buyersguide/Discover-the-advantages-API-management-platforms-offer-organizations
+
+APIs – the Doors to Digital Transformation
+API stands for Application Programming Interface and is one of the most common ways of communicating digital information today. Most apps today use APIs in the backend even though it may be invisible to the end user
+
+APIs help businesses to address two main use cases
+1. where an enterprise wants to expose a set of services or data internally for all its employees to consume. They can encapsulate commonly used services as APIs, or expose data available in back end systems to promote re-use and governance within the enterprise.
+2. where the enterprise would like to expose these APIs to the external world for branding, building developer mind share, marketing, customer engagement, or monetization.
+
+Benefits of API
+1. Customer satifaction and engagement
+2. Revenue Growth
+3. Operational Efficiency
+4. Partiner Contribution & Ecosystem
+
+
+API LifeCycle
+
+1. Design(API Designer/ API Product Manager) -> Gathers requirements; Applies best practises;Documentation 
+2. Implement(API Manager/Implementer) -> Create API, apply policies to support the design and security; Test/Deploy and Monitor(manage) the api
+3. Deploy(API Manager/ Gateway Manager) -> Deploy and configues GAteway nodes, monitor(manage) the gateway, reviews and approves api deployment
+4. Manage(API Manager/GAteway Manager) -> Monitor(manage) the API, adds/ remove security policies, SLA, Deploy/Undeploy/REdeploy API
+5. Discover(API Consumer) -> Searches APi catloag to identify existing apis, register desired apis; colloborate with api product/api manager to design api and capture requirements
+6. Monitor(API Consumer/ API manager/ API developer) -> Monitors API/ Performance, SLA's, security polcies are taken care
+
+API Management is the layer between the APIs and the end consumers (internal or external consumers)
+
+why we need api management
+
+Everyone has access to the new “Digital Building Blocks” such as mobile, IOT, social technologies, cloud computing which allow for rapid innovation. 
+Also, the new Microservices driven development approach is allowing for faster development, higher agility and faster time to market.
+Developers are building web apps, mobile apps and bots using newer visual, low code environments. 
+Developers can choose from a variety of cloud infrastructures and data stores. 
+Developers can choose from a number of app development infrastructures, DevOps tools and deployment options such as VMs or Docker containers. 
+Legacy architectures, large monolithic applications are now transitioning into Microservices and distributed computing architectures.
+API management is the process of designing, publishing, documenting and analyzing APIs in a secure environment. 
+Through an API management solution, an organization can guarantee that both the public and internal APIs they create are consumable and secure.
+
+
+tasks managed by API management
+API Design -> API Gateway(API Security) -> API store -> API analytics
+
+
+
+
+API Management solution -> key component of digital business success 
+			-> central to managing the relationshi b/w API providers and API users
+			-> You need to adopt an API management solution that 
+			  allows you to design, create, publish, and manage APIs to give your enterprise the business agility it requires.
+			-> Your API management solution needs to enable you to design and publish APIs in an iterative manner 
+			   while giving you full control of the API lifecycle.
+			-> When you want to enhance your API but don’t want to affect the customers already using it, you need to be able to create versions of the API.
+			-> You need to ensure that your services are available at any time on multiple platforms, especially those that your users are active on.
+			-> You can use APIs to make your services easily accessible on channels that your customers regularly interact with, including Facebook, Twitter, Instagram, chatbots, virtual reality or anything with an interface.
+			-> You should be able to control the levels of access each application type has and combine user authentication between different identity providers to make sure all IDs are fully verified.
+			-> 

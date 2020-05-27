@@ -1,0 +1,273 @@
+Exposing services to outside world -> via APIs -> API is used to show the data in their system to outside world using API's
+
+Creating new services; exposing services to internal teams/parters; integarate very fast
+
+Digital -> access info anywhere anytime
+
+expose the info anywhere anytime -> API
+
+APIGEE Edge 
+
+Why API Management platform -> security, on boarding, visibility, agility, scale issues in tradtional apps can be addressed
+			    -> security, performance, scalability, analytics, developer management
+
+API Proxy in APIGEE Edge
+---------------------------------------
+
+Api management(Apigee edge) -> a layer between client and server
+
+we can create a proxy and check the details in apigee account
+
+we can change the response from json to xml by configuring the proxy 
+	-> add xml to json/ json to xml to response in preflow to get response in 
+	json/xml for the proxy created
+
+Flow variables added to API management getting from client 	
+	request can be edited by the flow variable
+	-> request.queryparam.{queryparam_name} 
+	response can also be modified by editing the flow variable
+	-> response.header.{header_name}
+
+
+
+Proxy Endpoint -> contain information about url		
+		-> proxy related settings
+
+Target Endpoint -> url, http protocol support, connection timeouts
+		-> target related settings
+
+Proxy -> combo of vitual host and base path
+
+API Proxy flows 
+---------------------------------------
+
+Proxy End point -> divided into Pre Flow(executes for all scenarios), Cond Flow(based on condition), Post Flow(executes for default flow)
+
+Target Endpoint -> divided into Pre Flow(executes for all scenarios), Cond Flow(based on condition), Post Flow(executes for default flow)
+
+REquest flow 
+
+client -> proxy endpoint pre flow -> proxy end point cond flow(based on condition) -> proxy end point post flow
+	-> Target endpoint pre flow -> Target end point cond flow -> Target end point post flow -> backend server/service
+
+Resposne flow
+
+response from backend -> -> Target endpoint pre flow -> Target end point cond flow -> Target end point post flow -> 
+	-> Proxy end point pre flow -> Proxy end point cond flow -> Proxy end point post flow 
+	-> Proxy end point PostClient Flow(executes once async once resposne is sent to client)
+
+API policy
+---------------------------------------
+
+Has various policies for various functions()
+
+Quota policy for traffic management -> restrict number of requests per minute
+
+Api proxy configuration
+---------------------------------------
+
+combination of xml -> folder structure will be as below
+
+apiproxy(api proxy details will be there) 
+-> proxies (proxies will be there in proxy.xml)
+-> targets (target infor will be there in target.xml/default.xml; name of file is target endpoint)
+-> policies (policies info will be theer in policy.xml)
+
+step element is used to add a particualr flow(request/response)
+
+each proxy should have separate base path 
+
+API product
+---------------------------------------
+
+package the apis ->  internal apis and partner product
+
+Cache and scale
+---------------------------------------
+
+handle the high traffic loads by configuring cache in gateway
+-> handle the traffic by cachng the data
+
+save the details in first request in gateway cache and 
+for next request send the details from gateway instead of making a call to target server
+
+API Environment
+---------------------------------------
+deploy api proxies to various environments (test and prod by default)
+for enterprise we can have even more number of environments
+
+once development and testing is done for the proxy, deploy the same to another
+
+API Proxy Trace
+---------------------------------------
+API mangement is done using policies -> Trace is used to debug the proxy created
+
+status can be captured, method which is called and the time taken for response
+
+policies and flows can be seen in trace
+
+policies added to flow can be checked in trace -> flow variables and response can be checked
+
+API Traffic management
+---------------------------------------
+Quota policy -> 
+
+Spike arrest policy can be used to manage the traffic in apigee edge
+
+concurrent rate limit can be configured to manage the traffic
+
+Quota policy
+---------------------------------------
+
+API quota limitation
+restrict the number of requests in a particular time period 
+
+Policy has the template once added to request -> the template is editable
+the time period is configurable based on requirement 
+
+once policy is configured we can see in the trace that it will restrict the requests to back end server
+
+Distributed and synchronous in Quota policy
+---------------------------------------
+by default message processors in APIGEE edge which have a count based on which the policy configured will work
+
+by default we have 2 message processors without any distributed and synchornous details
+
+to have fixed counter in the policy we can use the distrbuted and synchornous elements in xml
+
+so we need to set distributed and synchronous should be true so counters will be in sync in message processors
+
+
+Unique counters -Flow variables in Quota policy
+---------------------------------------
+Unique counter for different developers based on query param/ flow variable
+
+To maintain unique counters with query param, add identifier query param in the xml to reflect the changes
+
+Message Weight in Quota policy
+---------------------------------------
+No target should be the configuration -> before creating a proxy
+
+to set the message weight based on request -> add java script code with message weight
+-> refer to that variable in java sccript and add the policy in thr proxy
+-> define separate message weight for GET and POST calls using the same policy in proxy
+
+Calendar Type in Quota policy
+---------------------------------------
+To start the counter at a particular date and time
+No quota planned tll that time 
+This can be acheived using calendar type and the quota will be triggered by that time
+default type will be calendar in quota policy, which is editable 
+time will be in GMT as per the configuration
+
+Rolling window type in Quota policy
+---------------------------------------
+There is no counter in the apigee edge which will be reset
+
+It will check the timeperiod since the time of last request and the quota voilation and allow/disallow the request
+
+type will be rolling window and configure the quota policy in proxy
+
+
+Flexi Type in Quota policy
+---------------------------------------
+By default quota will reset at every start of minute for the counter
+
+in default the ccounter is reset at the start of each minute
+
+Quota will start the counter when it reccieves the request from the client
+6:30:20 second the cliet sent request so counter is refer to that time
+
+Flexi will start the counter from the first request from client
+
+
+Conditional quota count in Quota policy
+---------------------------------------
+Assign the quota as per the condition and configure it differently for different developers
+
+allow and follow will be used to have conditional quota based on references with query param
+
+define different conditional quota based on flow varibles
+
+
+Flow Variable in Quota policy
+---------------------------------------
+Available quota count, used quota count, total quota count -> use these to convey the count information in response
+
+No target type for this flow varible type
+
+in the response we can check the quota related variable
+
+payload can be added in set to attach the same in the response
+
+Error Handling -Fault variables in Quota policy
+---------------------------------------
+error name and fail status variables can be used to set a specific message
+
+set custom message before sending the respsne back to client
+
+we can use a reverse proxy to have this configuration & add quota policy with default config in xml
+
+after the value is exceeded we can observe an error message
+
+add faultRules to show an error message 
+
+Assign message code to be changed 
+
+
+Spike Arrest policy
+---------------------------------------
+Throttling API requests and protect against attacks on target server(which can lead to latency or bringing down the server)
+address performance issues
+can be done using this spike arrest policy
+
+All requests goes through APIGEE for api management done using policies
+
+Spike arrest policy is used to protect the target server against service attacks
+
+6pm -> 6 requests per minutes -> divide 60 seconds into 6 -> allow one request 
+for every 10 seconds and discard the extra request in that 10 second period
+
+smoothen the traffic and protect against lot of service attacks
+
+Access Control Policy
+---------------------------------------
+Allow access to api based on ip address of client
+
+control client access based on ip address
+
+Basic authentication policy
+---------------------------------------
+
+create base 64 encoded auth header -> to transform user name and password entered by user to base64 encrypted format 
+				   -> and attach them in header
+
+encode & decode
+
+
+
+Things to learn
+---------------------------------------
+learn about flow variables Proxy and Target endpoint
+API flow, post client flow in response, conditional flow in response and request
+APi policies
+API configuration using code
+API product
+Caching and scale
+Environment
+Proxy Trace
+Traffic management
+Quota policy
+
+
+
+
+
+
+
+
+	
+
+
+
+ 

@@ -1,0 +1,46 @@
+API Engineer -> Managing API's
+
+APIGEE -> acquired by google
+
+Why APIGEE?
+What is APIGEE?
+
+What 
+API Management tool 
+Expose our API to internet -> managed by someone 
+
+Platform -> create proxies 
+interface between client and service
+
+in UP we do consume rest services from angular client 
+
+APIGEE -> puts a proxy between client(Android, IOS, Angular, any mobile device)
+-> rather than client consuming API we have proxy to consume services
+-> adding proxy can have securiy, rate limiting, caching, analytics 
+-> cors issues(cross origin -> angular is deployed in another server and java runs on another server, 
+browser has policies and request coming from client should be given @Cors in spring)
+Required headers for each request to tell that this is a valid request to be accepted
+Take boiler plate code and should be told to acccept by domain -> can be avoided by proxy
+-> APIGEE gives cors policies or proxy
+-> APIGEE provides security -> @Security in web service in 
+   rate limiting -> thousands of requests to exposed api , rest api to provide info about some requirement
+   lets say if we get 2 lakh requests and service is down 
+-> APIGEE can limit the number of requests 
+   product containing of multiple quota policies 
+   APIs -> exposed over internet -> sell product to different clients -> 1000 requests charge is decided and beyond that threshold that is different
+  -> for different client we have different pricing 
+  -> create products -> 2 different products for 2 different companies -> quota policies -> measure requests and price them accordingly
+-> APIGEE have quota policies
+-> APIGEE have caching(static data can be cached), perisistence(persist data) and BaaS(BAckend as a service)
+   client -> comes to proxy -> it hits proxy and get resposne from cache and give it back 
+-> APIGEE used to analyse the requests for API
+   transformation -> clients consume json -> most use restful web services 
+   legacy -> newest tech -> how much revenue to be invested for this transformation   
+   soap -> rest -> policy can be used to convert xml to json (we can expose our restful web services)
+-> APIGEE can be used in transformation
+
+URI should be designed in a proper format -> API design in REST APi can be done in a better way
+   
+
+Queries
+1. Check about BaaS
