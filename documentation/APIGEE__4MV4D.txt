@@ -245,6 +245,123 @@ create base 64 encoded auth header -> to transform user name and password entere
 encode & decode
 
 
+Json Threat protection policy
+---------------------------------------
+secure api from payload attacks 
+
+client is sending huge payload with too many params in backend & creating a load in the server
+
+When payload exceeds limit -> APIGEE will return the response 
+
+
+Key Value map in APIGEE(KVM Policy)
+---------------------------------------
+Inject additional information before sending the request to server
+
+Inject additional information before sending back the response to client
+
+We set the values from keys and set them to request/response
+
+Set the values in admin -> Environments -> test/prod -> key/value maps -> create new
+
+Create a KVM proxy 
+-> reverse proxy -> attach KVM proxy -> pre flow -> key value map operations 
+-> Get assign to, give query param value and provide reference -> specify map identifier which is the name of key value pair created earlier
+
+Update key value map in api run time 
+-> Add map identifier ->  Put override true -> add query parameter and reference value
+
+Improve performance of KVM Poilicy
+->  When calling key value maps, message processor will make a call to cassandra db and sometimes the response might be slow
+-> update get assign to -> specify map identifier & paramter will be the key name 
+-> update expirty time in seconds -> so that the data will be cached in message processor
+-> performance will improve once kvm is cached by specifying expiry time in seconds
+
+Store values in encrypted format
+Create Encrypted key value map -> create new key value map -> choose encrypte 
+-> create an entry in key value map -> the data is masked once saved
+-> create api proxy with this key value map 
+-> create reverse proxy -> kvm policy to pre flow -> specify map identifier and add GEt assign to by giving the reference as private.<value name>
+
+Delete KVM entries in Runtime
+-> Delete a existing kvm entry before sending a request to server or response to client
+-> create a reverse proxy -> add the kvm policy to pre flow -> specify map identifier 
+-> in delete tag -> give parameter value 
+-> so with this we can delete an entry when a request comes to this api
+
+KVM Scope
+Scope can be created to control the access of creation of key value pairs
+Scope can be defined at Org -> Environment -> Proxy -> Proxy Revision levels
+
+By default the scope is at environment level
+Define a reverse proxy -> Add KVM policy -> specify map identifier -> give scope as apiproxy/environment/org
+
+The access to key value pairs can be limited based on this scope defined in KVM Proxy
+
+Assign Message Policy
+---------------------------------------
+Control request and response 
+modify api behaviour without changing the code in backend 
+so we can control the request and response ; so we modify the request and response before sending it to server/client
+
+create new proxy -> deploy proxy -> preflow -> assign message policy
+-> inject query param with assign message policy 
+-> Add  -> Query Params -> Query Param -> Give name and value 
+-> When accessing the request we can see the query param injected with this policy
+
+Copy API elements and construct another request to call another API
+-> create new reverse proxy -> extract the query param passed 
+-> pre flow -> assign message policy -> query params -> query param, add name and value-> 
+-> assign to, create new true, type will be a new request 
+-> new request will be added in service callout policy, http target will be added with endpoint
+-> the request which is added in assign message policy type will be added in the request variable so, the mapping happens accordingly
+
+Remove API elements
+-> create new reverse proxy -> once proxy is deployed -> we can see the endpoint which is exposed to clients
+-> Pre flow -> assign message policy -> provide name 
+-> REmove -> form/query parameters, we need provide the name
+
+add/set API Elements
+Add header with query/form parameters 
+-> Modify request/response by adding headers/response payload before sending the request/response to client
+-> new reverse proxy -> add assign message policy once proxy is deployed
+-> add new elements -> headers-> header-> add name pass query params  in value 
+-> Remove query param -> Query Params -> query param, add name to that
+
+Create custom variables to send in request/response
+To be used when we need to add and remove some variables to request and response before accessing server/client
+create cusom variables to use in request/response and use it in another request
+-> create reverse proxy -> deploy the proxy -> 
+develop -> assign message policy -> assign variables, add name and reerecne as query param
+-> remove the query params as the server doesnt support query params
+-> add one more assign messsage policy for response 
+-> add new header from response with the variable created in request
+-> headers -> header -> name and the value will be varialble added in request
+
+
+Create new request/response objects
+When client sends a request we can modify the request and send it another target and get the new request to hit the server
+and we can create a new response in the same manner using the assign message policy
+add assign message policy to construct a new request
+-> set -> add query params -> query param, name should be address and value will be the form parameter
+-> attach service callout policy to make a call to the request 
+-> in trace after making the api call, we can see the response and that response can be 
+extracted using extract variable policy and again modify the payload of the api using
+assign message policy
+
+Set/Modify Payload 
+Backend accepts legacy soap request payload and is a soap service and client sends rest request
+so we need to change rest to soap using assign messsage policy
+In the same manner the response payload can be modified before sending back the respnse to client
+
+
+
+
+
+
+
+
+
 
 Things to learn
 ---------------------------------------
@@ -258,6 +375,15 @@ Environment
 Proxy Trace
 Traffic management
 Quota policy
+Spike arrest policy
+Access control policy
+Basic authentication policy
+Json Threat protection policy
+KVM Policy
+Assign Message Policy
+Service Callout policy
+
+
 
 
 
