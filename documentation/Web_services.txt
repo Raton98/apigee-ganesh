@@ -1,0 +1,40 @@
+https://docs.oracle.com/cd/E13224_01/wlw/docs100/guide/webservices/conBasicWebServiceTechnologies.html#:~:text=on%20edocs%20documentation.-,Introduction%20to%20Web%20Service%20Technologies,are%20written%20in%20different%20languages.
+
+Web Services
+-----------
+-> makes application resources available over networks 
+-> based on standard interfaces, OS independant(cross platform), multi lingual support
+-> Asynchronous functionality
+-> application components, communicate using open protocols
+-> self contained and self describing
+-> can be discovered using UDDI(Universal description, discovery and integration)
+
+
+
+
+Network protocols
+-----------------
+
+Things to check
+---------------
+
+
+1. WSDL, XML based SOAP, RDF, RSS
+
+WSDL: Web services description language, used to describe web services and written in XML, contain tags to define a web service
+-> port type, can be used to define the operations performed and messages that are involved.
+	one-way(SET); request-response(GET); solicit-response; notification
+
+-> binding can be done to SOAP service, using soap:binding
+
+
+SOAP : Simple Object Access protocol
+-> XML based protocol for accessing web services
+
+
+RDF: Resource description framewirk
+-> Describing resources on the web, written in xml
+
+RSS: Really simple syndication
+-> syndicate your site content, easy way to share and view headlines and content
+-> RSS files can ne automatically updated
