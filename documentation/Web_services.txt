@@ -9,6 +9,21 @@ Web Services
 -> self contained and self describing
 -> can be discovered using UDDI(Universal description, discovery and integration)
 
+History of web-services
+-----------------------
+-> evolved from RPC(Remote procedure call) mechanism in DCE(Distributed computing environment)
+-> Early 1990s DCE includes distributed file system(DCE/DFS) and kerberos-based authentication system
+-> DCE has its origins from Unix world, Microsoft did its implementation MSRPC, for interprocess communication in windows
+-> Microsoft's COM/OLE(Common Object Model/Object Linking and embedding) technologies are build on DCE/RPE foundation
+-> DCE designed RPC to do distributed computing(computing across distinct physical devices), Microsoft cleverly adapted RPC to support interprocess communication
+   in the form of COM infrastructure, on a single device, a PC running windows
+-> 1st gen frameworks for distributed object systems, CORBA(common object request broker architecture) and Microsoft's DCOM(Distibuted COM), are anchored in DCE/RPC procedural framework.
+-> Java RMI (Remote method invocation) also derives from DCE/PRC, and the method calls in Java EE(Enterprise Edition), specifically in Session and Entity EJBs(Enterprise Java Edition) are Java RMI calls.
+-> Java EE(Formerly J2EE) and Microsoft .Net are 2nd gen frameworks for Distributed objecct systems
+-> Samba file and print service for windows clients utilities still use DCE/RPC
+
+1st Gen Distributed object systems -> CORBA and DCOM
+2nd Gen Distributed object systems -> Java EE and Microsoft .Net 
 
 
 
@@ -38,3 +53,4 @@ RDF: Resource description framewirk
 RSS: Really simple syndication
 -> syndicate your site content, easy way to share and view headlines and content
 -> RSS files can ne automatically updated
+
