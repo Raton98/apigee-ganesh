@@ -1,4 +1,6 @@
 https://docs.oracle.com/cd/E13224_01/wlw/docs100/guide/webservices/conBasicWebServiceTechnologies.html#:~:text=on%20edocs%20documentation.-,Introduction%20to%20Web%20Service%20Technologies,are%20written%20in%20different%20languages.
+https://www.oreilly.com/library/view/java-web-services/9781449373856/ch01s04.html#Ex_idl
+https://www.informit.com/articles/article.aspx?p=27295&seqNum=3
 
 Web Services
 -----------
@@ -8,9 +10,27 @@ Web Services
 -> application components, communicate using open protocols
 -> self contained and self describing
 -> can be discovered using UDDI(Universal description, discovery and integration)
+-> simplify matters in distributed computing.
 
 History of web-services
 -----------------------
+assembly lanugages(executed in single memory space) -> procedural langugaes(C,COBOL and FORTAN)
+-> functional languages(LISP) -> object oriented languages (C++, Java)
+with languages the web services also evolved with time
+
+-> Early days, computer programs were written in assembly language and executed in a single memory space, and they are communicated digitally via machine registers and not portable and hard to write and maintain.
+-> After Assembly language came procedural languages which provided a layer of abstraction so that programs can be written more easily and run on different machines,
+   Here software services are assembly sub routines and they are executed in a single memory space
+-> Initially the information was exchange/transfer data using magnetic pipes, and later when network computing introduced, in UNIX operating system, had a built in support for TCP/IP protocol 
+-> C language is most popular for writing network application, a new technique RPC was invented to allow functions in any procedural language, to invoke each other across a network
+-> So Software services now to break free from the confines of indivdual machines and collaborate on a large scale
+-> With the development of functional & Object oriented languages, developes are allowed to create software objects like real world counterparts, 
+   and distributed computing protocols were designed to allow objects to communication in more natural fashion than RPC; 
+With time after internet came into picture and which is based on simple set of open standards,
+HTTP protocol, transport protocol for sharing date between machines
+HTML and HTTP make it easy for people to share content across the Internet
+
+
 -> evolved from RPC(Remote procedure call) mechanism in DCE(Distributed computing environment)
 -> Early 1990s DCE includes distributed file system(DCE/DFS) and kerberos-based authentication system
 -> DCE has its origins from Unix world, Microsoft did its implementation MSRPC, for interprocess communication in windows
@@ -23,28 +43,196 @@ History of web-services
 -> Samba file and print service for windows clients utilities still use DCE/RPC
 
 1st Gen Distributed object systems -> CORBA and DCOM
-2nd Gen Distributed object systems -> Java EE and Microsoft .Net 
+2nd Gen Distributed object systems -> Java EE(J2EE) and Microsoft .Net 
+
+From DCE/RPC to XML-RPC
+-----------------------
+-> DCE/RPC has client/server architecture in which a client invokes a procedure that executes on a server
+-> arguments can be passed from client to server and server returned values can be passed to client
+-> IDL(Interface Definition language) document that acts as the service contact and is an input to utilites that generate artifacts in support of DCE/RPC calls
+-> except for annotations in square brackets to the left, the sytax of the IDL is essentially C syntax.
+-> IDL is precursor of WSDL(Web Service Description language) document that provides a formal specification of a web service and its operations
+-> Active X control under windows is a DLL(Dyanamic link library) with an embedded typelib, which in turn is a compiled IDL file
+-> for eg, caledar active x control is plugged into a browser, and browser can red the typelib, which contains the invocation of sytnax of each operation(e.g., displaying the next month) in the control
+-> Active x control is thus a chunk of software that embeds its own interface
+
+-> Dave Winer of Userland software developed XMl-RPC, a tech innovation that has a good a clian as any to mark the birth of web services
+-> XML-RPC is a light weight RPC system.
+-> Key features are the XML marshalling/unmarshalling to achieve language neutrality and reliance on HTTP(and,later, SMTP)
+-> XML-RPC payloads are text and whereas DCE/RPC payloads are binary. Text is relatively easy to inspect and process with editors
+-> XML-RPC transport uses HTTP rather than a proprietory system. To support XML-RPC , programming language requires only a standard HTTP lubrary together with libraries to generate, parse, transform and otherwise process XML
+-> XML/RPC supports the request/response pattern. XML request to invoke on a remote machine, the fibonnacci function with a argument of 11, passed as a 4 byte integer, as the xml start tab <i4>
 
 
+-> XML/RPC is deliberately low fuss and lightweight. SOAP, is an XML dialect derived straight from XML-RPC, and it heavier in weight 
+-> XML/RPC faced competition from 2nd gen DOA systems JEE(J2EE) and Asp.Net
 
-Network protocols
------------------
+Distributed Object Architecture
+-------------------------------
+-> Java RMI (Remote method invocation) includes Session and Entity EJB constructs built on Java RMI
+-> Java RMI stub is required and it is automatically downloaded from the server to client as part of Java RMI setup
+-> stub acts as a client side object for making a remote method call through one of stub's encapsulated methods
+   and the types which are not primitive have to be be invoked separately by cliet side, which is a challenge
+-> Just for setup lots and lots of bytes required to move from server down to client, prone to problems such as 
+   versioning issues and outright errors in remote method calls
+-> Java RMI/ .Net Remoting service are specific to Java/.Net clients
+-> For standarization, simplicity and interoperability they moved to Web services
 
-Things to check
----------------
+How web services evolved
+------------------------
+RPC in DCE(DFS)		-> MSPRC
+
+IDL in DCE/RPC 		-> DLL with an embedded typelib, which in turn is a compiled IDL file in windows
+
+Distributed Object Systems(DOA, Distributed Over Architecture)
+			-> CORBA && Microsoft's DCOM -> All implemented based on DCE/RPC -> 1st Generation
+			-> Java RMI &.Net Remoting   -> 2nd Gen DOA
+			-> JEE & ASP.Net 	     -> Session and Entity EJB build on Java RMI & .Net Remoting
+
+XML/RPC			-> Faced competition from 2nd Gen DOAs
+
+WSDL			-> its an equivalent of IDL like in CORBA/DCOM
+
+Web Services 		-> client and service typically exchange XML/ equivalent documents, i.e., text
+
+DCE/RPC -> (DOA; CORBA& DCOM; Java RMI &.Net Remoting) -> XML/RPC -> Web services(SOAP)
+
+Key features/Advantages
+-----------------------
+DCE/RPC	 
+	-> Familiar client/server architecture in which a client invokes a procedure that executes on a server
+	-> Framework is platform and language neutral
+	-> provides software libraries that hide the transport details
+	-> IDL document acts as the service contract 
+CORBA & DCOM
+	-> Deployments of these technolgies were homogenous, closed environments
+	-> Link systems that used different protocols, install protocol converters on each gateway
+	-> Use Binary Encoding for arguments and return values and both sender and receiver will have knowledge of message context 
+	and do not encode any meta info such as names or types of arguments, which results in good performance
+XML/RPC	 
+	-> Tech innovation that has a good claim as any to mark the birth of web services
+	-> Light weight RPC system
+	-> Key features are the use of XML Marshalling/Unmarshalling to acheive language neutrality and rely on HTTP for transport
+	-> To support XML-RPC, programming language requires HTTP library together with libraries to genrate, parse, transform to process XML
+DOA(Java RMI & .Net Remoting service) 
+	-> Java RMI service can be expected to have mostly java clients
+	-> .Net Remoting service can be expected to have mostly .Net clients
+Web Services
+	-> No need for client and server to be coded in the same language
+SOAP
+	-> uses XML to encode messages, easu to process messages at every step of invocation process
+	-> Easy debugging with soap messages lead to various soap implementation which in turn result in large scale interoperability
+
+WSDL 	-> Have key characterstics of a web service and once it is publised the soap clients and find service and bind it
 
 
-1. WSDL, XML based SOAP, RDF, RSS
+Limitations and drawbacks
+-------------------------
+DCE/RPC	 
+	-> Although framework is platform and language neutral, but strongly tilted towards C
+	-> Payloads are binary which is not easy to inspect and process with standard parsers/editors
+XML/RPC	 
+	-> SOAP, an XML dialect derived straight from XML-RPC is heavier
+DOA(CORBA & DCOM)
+	-> Makes it hard for intermediaries to process messages, since each sytem uses a different binary encoding, 
+	its hard to build systems that interoperate
+DOA(Java RMI & .Net Remoting service) 
+	-> lots and lots of bytes required to moved from server to client just for setup
+	-> Java RMI service can be expected to have mostly java clients
+	-> .Net Remoting service can be expected to have mostly .Net clients
+Web Services
+	-> From a historical perspective REST-style services can be viewed as a reaction to the growing complexity of SOAP-based ones
+SOAP
+	-> Unlike CORBA and DCOm, SOAP does encode/decode the messages at each end point and 
+	the time taken is tiny compared to time transfer bytes between endpoints, so using XML is not that significant
+	
+
+So for standarization, simplicity and interoperability WEB SERVICES came into picture
+
+Web Services
+-----------
+-> HTML and HTTP made easy for people to share content across internet
+-> Build on top of HTTP and XML, the standards of services like SOAP, WSDL and UDDI 
+   have standards that allow software services to be published, located and invoked in a way that is language & location independant
+-> Web services come in two popular flavors; SOAP based and REST style
+-> SOAP is SML dialect and REST style tend to be a request/response
+
+
+SOAP 
+-> Service Oriented Architecture protocol, Simple Object Access protocol
+-> XML based protocol for accessing web services
+-> one of the Standard for network communication between software services
+-> sending messages between endpoints, SOAP messages are represented in XML and can be sent over to transport layer
+-> It has implementation availalable for SMTP, JMS and IBM MQ series
+
+SOAP container
+-> To publish a software component as a web service is to use a SOAP container which accepts requests and dispatch
+   them to published components automatically translationg between SOAP and components native language interface
+-> once component is published as web service, SOAP enabled client knows network address of service 
+   and understand to send a SOAP request and get a SOAP response
+-> To get the address and message information SOAP clients read a WSDL file, which describe a web service
+-> Most Soap containers generate wsdl for web services, once WSDL is read client can start sending SOAP messages to wen service
+-> Each SOAP container has different API;s for starting up in process HTTP server and publishing objects as web services
+-> Details can be captured when a request is sent from client in the network tab of developer tools
+
+Different part os SOAP request
+-> HTTP header, indicated POST/ GET operation whose URI is given and content type is shown in the first part
+-> in 2nd part, Envelope, HEader and Body are shown
+
+-> Soap Request is accepted by a servlet/standalone daemon running on the remote web server
+   and when servlet gets the request and it forwards to SOAP container and the target web service is identified 
+   and XML payload is parsed and component method is invoked
+
+-> similary Soap response and soap exceptions with fault code, string, actor and details can be identified
+
+-> With soap we can share 500 messages/second, if client and server are in different programs in same machine around 300 messages/second
+
+-> Arrays,Objects and other complex data structues can be sent in platform and language neutral way
+
+-> SOAP headers support security, transaction and routing
+
+-> SOAP supports request-response, one-way, solicit-response, and notification operations
+
+Advantages of SOAP
+------------------
+-> No Knowledge of SOAP or WSDL is neccesary to immediately become a productive web services developer
+-> Most SOAP containers are able to publish unmodifed software components , which is good because domain objects should not be coupled with 
+   details of distributed computing
+-> Contrary to CORBA and DCOM whcih are binary and not self describing and tough to trace, with SOAP we can figure out what is happening
+
 
 WSDL: Web services description language, used to describe web services and written in XML, contain tags to define a web service
 -> port type, can be used to define the operations performed and messages that are involved.
 	one-way(SET); request-response(GET); solicit-response; notification
-
 -> binding can be done to SOAP service, using soap:binding
+-> WSDL is XML equvalent of a resume, which describes what a web sevice can do, where it resides and how to invoke it
+-> Describe characterstics of a web service, and once WSDL is published SOAP clients can find service and bind it
 
+UDDI: Universal Description, Discovery and integration
+-> Allows info about businesses and services to be published and queried
+-> Publised info is stored in one or more UDDI registires, accesed through web browser via SOAP
+-> Three public UDDI registries hosted by IBM, Microsfot and HP synchronize contents regularly so that replication is done easily among others
+-> For easy understanding to developers they host a test registry for educational purposes
 
-SOAP : Simple Object Access protocol
--> XML based protocol for accessing web services
+RESTFul Web services
+--------------------
+-> Java has options for implementing and publishing RESTful web services
+-> Publish end, choices vary from various web services 
+-> HTTP itself is seen as an API in REST style
+-> HttpServlet and JSP APIs; JAX-RS(Java API for XML Restful services); 3rd party Restlet API; JAX-WS(JAva API for XML-web services, @WebServiceProvider interfact )
+-> Most part, API is used to implement web service and does not bother about service being publised, exception to this is the servlet API, servlet need to be deployed in servlet container(tomact/jetty)
+
+Advantages of RESTFul Web services
+----------------------------------
+-> Has no official standards and comparitively few toolkits and uneven software libraries among programming languages, yet it is the most used
+-> Antidote to complex SOAP based web services, As SOAP services are transport neutral, may seem overly complicated if the transport is HTTP.
+
+Web Services Adoption advantages
+--------------------------------
+Interoperability(a web service can interact with another); 
+Ubiqity (any devices that supports standards to communicate using HTTP and XML can host web services); 
+Low barrier to entry (Easy to undersatnad and freely availble to vendors)
+Industy support (all major vendors support this)
 
 
 RDF: Resource description framewirk
@@ -53,4 +241,23 @@ RDF: Resource description framewirk
 RSS: Really simple syndication
 -> syndicate your site content, easy way to share and view headlines and content
 -> RSS files can ne automatically updated
+
+Advantages of REST over SOAP
+---------------------------
+-> REST has greater variety of data formats, soap is limited to only XML
+-> REST is easy to work with as it is coupled with JSON(which works better with data and offers faster parsing)
+-> With JSON, REST offers better support with browser clients
+-> REST is faster and uses less band width
+
+Benefits of SOAP over REST
+--------------------------
+-> Based on personal preference
+-> Robost security, SOAP is most suited, SOAP support for WS-secuity can come handy
+-> Build in retry logic to compensate for failed communications, REST does not have built in messaging system, 
+   if the communication fails in REST, client has to deal wtih retrying
+
+Conclusion
+-----------
+Most new APIs are built using REST and JSON, simply because it typically consumes less bandwidth and is easier to understand both for developers 
+implementing initial APIs as well as other developers who may write other services against it
 
